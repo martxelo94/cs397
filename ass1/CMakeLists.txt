@@ -64,7 +64,7 @@ ENDIF ()
 
 ##################################
 # CMake search directories
-INCLUDE_DIRECTORIES(dependencies/include/gtest)
+INCLUDE_DIRECTORIES(dependencies/include)
 INCLUDE_DIRECTORIES(dependencies/src)
 INCLUDE_DIRECTORIES(./src)
 

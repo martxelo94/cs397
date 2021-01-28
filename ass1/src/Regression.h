@@ -42,12 +42,16 @@ class Regression
                     const std::vector<double> & output,
                     const std::vector<double> & target) const;
 
+  // for intercept variable
+   double Regression::DeltaCost(const std::vector<double> & output,
+                                const std::vector<double> & target) const;
+
     Dataset dataset;
     std::vector<Feature> features;
     double lr;  // Learning rate
     bool meanNormalization; // True if input data should be mean normalized
 
-    const int MAX_ITERATIONS = 1;  // avoid infinite loop
+    const int MAX_ITERATIONS = 10000;  // avoid infinite loop
     int current_iterations = 0;
 
 };

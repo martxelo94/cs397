@@ -160,7 +160,7 @@ TEST(Regression, LearnMultivariableLinearWithIntercept)
     {
         iterationCount++;
     }
-
+    printf("Iterations at %s: %d", "LearnMultivariableLinearWithIntercept", iterationCount);
     // compute prediction
     std::vector<double> output = regression.Predict(test_set.input);
 

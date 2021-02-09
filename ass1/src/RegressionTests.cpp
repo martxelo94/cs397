@@ -160,7 +160,7 @@ TEST(Regression, LearnMultivariableLinearWithIntercept)
     {
         iterationCount++;
     }
-
+    printf("Iterations at %s: %d", "LearnMultivariableLinearWithIntercept", iterationCount);
     // compute prediction
     std::vector<double> output = regression.Predict(test_set.input);
 
@@ -248,7 +248,20 @@ TEST(Regression, HousePriceDeduction)
     Dataset  dataset      = LoadRealStateCSV(numberInputs);
 
     // STUDENT TEST
+        std::vector<Feature> features   = {  };
+    Regression           regression = Regression(dataset, features, learningRate, false);
 
+    // train regression
+    int iterationCount = 0;
+    while (regression.Iteration())
+    {
+        iterationCount++;
+    }
+
+    // compute prediction
+    std::vector<double> output = regression.Predict(dataset.input);
+
+    double cost = regression.Cost(output, dataset.output);
     /////////////////////////////////////////////
     ASSERT_LT(cost, 40.0);
 }
@@ -299,7 +312,20 @@ TEST(Regression, LifeExpectancyData)
     Dataset  dataset      = LoadLifeExpectancyDataCSV(numberInputs);
 
     // STUDENT TEST ///////////////////////////////////////////////////
-    
+    std::vector<Feature> features   = {  };
+    Regression           regression = Regression(dataset, features, learningRate, false);
+
+    // train regression
+    int iterationCount = 0;
+    while (regression.Iteration())
+    {
+        iterationCount++;
+    }
+
+    // compute prediction
+    std::vector<double> output = regression.Predict(dataset.input);
+
+    double cost = regression.Cost(output, dataset.output);
     /////////////////////////////////////////////
     ASSERT_LT(cost, 20.0);
 }
@@ -309,6 +335,8 @@ int main(int argc, char ** argv)
     testing::InitGoogleTest(&argc, argv);
 
     int toReturn = RUN_ALL_TESTS();
+
+    std::system("pause");
 
     return toReturn;
 }
